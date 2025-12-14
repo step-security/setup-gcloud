@@ -33,12 +33,29 @@ import {
   presence,
 } from '@google-github-actions/actions-utils';
 import path from 'path';
+import axios, { isAxiosError } from 'axios';
 
 // Do not listen to the linter - this can NOT be rewritten as an ES6 import
 // statement.
 const { version: appVersion } = require('../package.json');
 
+async function validateSubscription(): Promise<void> {
+  const API_URL = `https://agent.api.stepsecurity.io/v1/github/${process.env.GITHUB_REPOSITORY}/actions/subscription`;
+
+  try {
+    await axios.get(API_URL, { timeout: 3000 });
+  } catch (error) {
+    if (isAxiosError(error) && error.response?.status === 403) {
+      core.error('Subscription is not valid. Reach out to support@stepsecurity.io');
+      process.exit(1);
+    } else {
+      core.info('Timeout or API not reachable. Continuing to next step.');
+    }
+  }
+}
+
 export async function run(): Promise<void> {
+  await validateSubscription();
   // Note: unlike the other actions, we actually want to export this as a
   // persistent variable for future steps. Other actions should set process.env
   // or use stubEnv to only set metrics for the duration of the step.
