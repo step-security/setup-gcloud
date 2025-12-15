@@ -118,7 +118,7 @@ export async function run(): Promise<void> {
       await installComponent(components.split(',').map((comp) => comp.trim()));
     }
 
-    // Authenticate - this comes from google-github-actions/auth
+    // Authenticate - this comes from step-security/google-github-auth
     const credFile = process.env.GOOGLE_GHA_CREDS_PATH;
     if (credFile) {
       await authenticateGcloudSDK(credFile);
@@ -134,7 +134,7 @@ export async function run(): Promise<void> {
       if (!authed) {
         core.warning(
           `The gcloud CLI is not authenticated (or it is not installed). ` +
-            `Authenticate by adding the "google-github-actions/auth" step ` +
+            `Authenticate by adding the "step-security/google-github-auth" step ` +
             `prior this one.`,
         );
       }
@@ -149,7 +149,7 @@ export async function run(): Promise<void> {
     core.setOutput('version', version);
   } catch (err) {
     const msg = errorMessage(err);
-    core.setFailed(`google-github-actions/setup-gcloud failed with: ${msg}`);
+    core.setFailed(`step-security/setup-gcloud failed with: ${msg}`);
   }
 }
 

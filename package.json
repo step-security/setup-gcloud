@@ -2,7 +2,7 @@
   "name": "setup-gcloud",
   "version": "3.0.1",
   "description": "Setup gcloud GitHub action",
-  "main": "dist/main/index.js",
+  "main": "dist/index.js",
   "scripts": {
     "build": "ncc build -m src/main.ts",
     "docs": "./node_modules/.bin/actions-gen-readme",
