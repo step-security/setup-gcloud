@@ -1,0 +1,19 @@
+[[IgnoredVulns]]
+id = "GHSA-2mjp-6q6p-2qxm"
+reason = "undici@5.29.0 is a transitive dep of @google-github-actions/setup-cloud-sdk. This GitHub Action only connects to trusted Google Cloud APIs, so HTTP request smuggling is not exploitable here. No upstream fix available (setup-cloud-sdk@2.0.0 pins @actions/http-client@^2.2.3)."
+
+[[IgnoredVulns]]
+id = "GHSA-4992-7rv2-5pvq"
+reason = "undici@5.29.0 is a transitive dep of @google-github-actions/setup-cloud-sdk. CRLF injection via upgrade option is not exploitable as this Action only connects to trusted Google Cloud APIs."
+
+[[IgnoredVulns]]
+id = "GHSA-g9mf-h72j-4rw9"
+reason = "undici@5.29.0 is a transitive dep of @google-github-actions/setup-cloud-sdk. Unbounded decompression chain is not exploitable as this Action only fetches from trusted Google Cloud APIs."
+
+[[IgnoredVulns]]
+id = "GHSA-v9p9-hfj2-hcw8"
+reason = "undici@5.29.0 is a transitive dep of @google-github-actions/setup-cloud-sdk. WebSocket server_max_window_bits validation issue is not exploitable as this Action does not use WebSockets."
+
+[[IgnoredVulns]]
+id = "GHSA-vrm6-8vpv-qv8q"
+reason = "undici@5.29.0 is a transitive dep of @google-github-actions/setup-cloud-sdk. WebSocket permessage-deflate memory issue is not exploitable as this Action does not use WebSockets."
