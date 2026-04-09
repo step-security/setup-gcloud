@@ -17,9 +17,9 @@
 {
   "compilerOptions": {
     "alwaysStrict": true,
-    "target": "es2022",
+    "target": "es2024",
     "module": "commonjs",
-    "lib": ["es2022"],
+    "lib": ["es2024"],
     "outDir": "./dist",
     "rootDir": "./src",
     "strict": true,
